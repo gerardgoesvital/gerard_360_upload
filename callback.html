@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>TikTok OAuth Callback</title>
+<style>
+body { font-family: sans-serif; max-width: 600px; margin: 60px auto; padding: 0 20px; }
+code { background: #eee; padding: 10px; display: block; word-break: break-all; margin-top: 10px; }
+button { margin-top: 10px; padding: 8px 16px; }
+</style>
+</head>
+<body>
+<h1>TikTok authorization</h1>
+<p>Copy the authorization code below and paste it into the script:</p>
+<code id="code">(reading...)</code>
+<button onclick="copyCode()">Copy code</button>
+<p id="status"></p>
+<script>
+const params = new URLSearchParams(window.location.search);
+const code = params.get("code") || "(no code found in URL)";
+document.getElementById("code").textContent = code;
+function copyCode() {
+  navigator.clipboard.writeText(code).then(() => {
+    document.getElementById("status").textContent = "Copied!";
+  });
+}
+</script>
+</body>
+</html>
